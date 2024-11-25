@@ -1,0 +1,283 @@
+
+:root{
+    --dayBlockWidth: 30px;
+    --timelineMonthBlockBorder: 1px;
+    --timelineTaskHeight: 50px;
+    --scalableFontHeight: 10px;
+    --scalableFontWidth: 20px;
+    --lightColor: rgb(255, 255, 255);
+}
+
+@media only screen and (max-width: 600px) {
+    :root{
+        --scalableFontWidth: 15px;
+    }
+}
+@media only screen and (max-width: 1000px) and (min-width:600px){
+    :root{
+        --scalableFontWidth: 18px;
+    }
+}
+@media only screen and (max-height: 400px){
+    :root{
+        --scalableFontHeight: 5px;
+    }
+}
+@media only screen and (max-height: 600px) and (min-height: 400px){
+    :root{
+        --scalableFontHeight: 7px;
+    }
+}
+
+*{
+    text-align: center;
+}
+
+body{
+    background-color: rgb(14, 12, 36);
+}
+
+#title{
+    color: var(--lightColor);
+}
+#new_task_btn{
+    background-color: rgb(224, 187, 82);
+    border: 4px solid rgb(238, 160, 58);
+    border-radius: 5%;
+    width: 26vw;
+    height: 4vh;
+    font-size: calc(var(--scalableFontHeight)*1.5);
+}
+#new_task_btn:hover{
+    background-color: rgb(141, 228, 141);
+    border: 4px solid rgb(69, 129, 34);
+}
+
+#task_list_container{
+    margin-top: 4vh;
+    width: 80vw;
+    height: 25vh;
+    position: relative;
+    left: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task_list{
+    border: 3px solid rgb(167, 118, 45);
+    background-color: rgb(177, 182, 181);
+    width: 40%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.task_list_title{
+    position: absolute;
+    font-size: var(--scalableFontWidth);
+    color: var(--lightColor);
+    text-decoration: underline;
+}
+#completed_tasks_title{
+    top: -20px;
+    left: 8vw;
+}
+#outstanding_tasks_title{
+    top: -20px;
+    left: 56vw;
+}
+
+input,label{
+    display: block;
+}
+
+#task_editor{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: 600px;
+    width: 400px;
+    background-color: rgb(129, 190, 240);
+    border: 5px solid rgb(247, 184, 49);
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#cancelBtn{
+    position: absolute;
+    left: 10px;
+    top:10px;
+    height: 60px;
+    width: 60px;
+    background-color: rgb(170, 144, 110);
+}
+#cancelBtn:hover{
+    background-color: rgb(236, 202, 158);
+}
+#removeBtn{
+    position: absolute;
+    right: 10px;
+    top:10px;
+    height: 60px;
+    width: 60px;
+    background-color: rgb(219, 79, 79);
+}
+#removeBtn:hover{
+    background-color: rgb(255, 10, 10);
+}
+
+.hide{
+    display: none !important;
+}
+
+.task_block{
+    width: 80%;
+    height: 16%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.timeline_block{
+    height: var(--timelineTaskHeight);
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    /*Note: The flex display is purely so that we can align the items at the center 
+    (but maybe also to future proof it in case I decide to add more elements later)*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.completed_task{
+    background-color: rgb(166, 216, 100);
+    border-color: rgb(62, 192, 68);
+}
+.outstanding_task{
+    background-color: rgb(240, 238, 113);
+    border-color:  rgb(226, 162, 67);
+}
+.late_task{
+    background-color: rgb(233, 113, 113);
+    border-color:  rgb(122, 32, 32);
+}
+.hovered_task{
+    background-color: rgb(164, 78, 175);
+    border-color:  rgb(112, 23, 83);
+}
+.task_block > h3{
+    height: 100%;
+    width: 60%;
+    font-size: calc(var(--scalableFontHeight)*2);
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+.task_block >.completion_btn{
+    height: 80%;
+    width: 23%;
+    font-size: var(--scalableFontHeight);
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+.task_block >.edit_btn{
+    height: 80%;
+    width: 13%;
+    font-size: var(--scalableFontHeight);
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+.timeline_block>h3{
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+#outstanding_tasks>.task_block>.completion_btn:hover{
+    background-color: rgb(66, 223, 87);
+}
+#completed_tasks>.task_block>.completion_btn:hover{
+    background-color: rgb(238, 62, 62);
+}
+.task_block >.edit_btn:hover{
+    background-color: coral;
+}
+
+
+textarea{
+    resize: none;
+}
+
+#timeline{
+    margin-top: 4vh;
+    position: relative;
+    left: 5vw;
+    width: 90vw;
+    height: 40vh;
+    border: 4px solid rgb(226, 160, 60);
+    overflow:auto;
+    background-color:aliceblue;
+}
+
+
+#dates{
+    position: sticky;
+    top: 0;
+    left: 0;
+    /*width and height is set in the javascript code*/
+    display: flex;
+    flex-direction: row;
+    border-bottom: var(--timelineMonthBlockBorder) solid black;
+}
+
+.monthBlock{
+    display: flex;
+    flex-direction: column;
+    border-right: var(--timelineMonthBlockBorder) solid black;
+}
+.monthTitle{
+    height: 50px;
+    background-color: rgb(247, 224, 162);
+}
+.days{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(185, 241, 223);
+}
+.days > p{
+    width: var(--dayBlockWidth);
+}
+
+#centreTimeline{
+    position: relative;
+    top: 10px;
+    width: 120px;
+    height: 40px;
+}
+
+#description_block{
+    background-color: white;
+    border-radius: 10%;
+    border: 6px solid rgb(176, 35, 231);
+    position: absolute;
+    width: 20vw;
+    max-height: 60vh;
+    overflow-y:hidden;
+}
+#description_description{
+    overflow-wrap: break-word;
+}

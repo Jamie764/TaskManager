@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Task Management Project</title>
+        <meta name="description" content="Webpage for creating, scheduling and managing tasks"/>
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1 id="title">Task Manager</h1>
+        <button type="button" id="new_task_btn">Add New Task</button>
+        <div id="task_list_container">
+            <div class="task_list_title" id="completed_tasks_title">Completed Tasks:</div>
+            <div class="task_list_title" id="outstanding_tasks_title">Outstanding Tasks:</div>
+            <div id="completed_tasks" class="task_list">
+
+            </div>
+            <div id="outstanding_tasks" class="task_list">
+                
+            </div>
+        </div>
+        <div id="timeline">
+            <div id="timeline_blocks">
+
+            </div>
+            <div id="dates">
+
+            </div>
+        </div>
+
+        <button type="button" id="centreTimeline">Current Date</button>
+
+        <div id="description_block" class="hide">
+            <h2 id="description_title">Title</h2>
+            <p id="description_description">Description</p>
+        </div>
+
+        <form id="task_editor" class="hide" action="">
+            <div>
+                <!--The max length of a name is subject to change-->
+                <label for="task_name">Task Name: </label>
+                <input type="text" id="task_name" required maxlength="30"><br>
+            </div>
+
+            <div>
+                <label for="task_description">Description: </label>
+                <textarea id="task_description" rows="10" cols="48" maxlength="500"></textarea><br>
+            </div>
+
+            <div>
+                <label for="task_start">Start Date: </label>
+                <input type="date" id="task_start"><br>
+            </div>
+
+            <div>
+                <label for="task_end">End Date: </label>
+                <input type="date" id="task_end"><br>
+            </div>
+            
+            <button id="cancelBtn" type="button">Cancel</button>
+            <button id="removeBtn" type="button">Delete</button>
+
+            <input type="submit" value="Create Task" id="submitBtn">
+        </form>
+    </body>
+    <script src="script.js"></script>
+</html>
